@@ -21,7 +21,8 @@ class CommentServiceTest {
     @Test
     void createCommentTest() {
         String postId = "1000";
-        CommentService commentService = new CommentService();
+        CommentEvent commentEvent = new FakeCommentEvent();
+        CommentService commentService = new CommentService(commentEvent);
 
         Comment newComment = new Comment();
         newComment.setContent("First comment");
@@ -44,7 +45,8 @@ class CommentServiceTest {
     void getCommentsByPostTest() {
         Comment comment;
         List<Comment> comments;
-        CommentService commentService = new CommentService();
+        CommentEvent commentEvent = new FakeCommentEvent();
+        CommentService commentService = new CommentService(commentEvent);
 
         String postId1 = "1000";
 

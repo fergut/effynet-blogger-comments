@@ -1,7 +1,9 @@
 package com.effynet.blogger.comments.web;
 
 import com.effynet.blogger.comments.domain.entities.Comment;
+import com.effynet.blogger.comments.domain.entities.CommentEvent;
 import com.effynet.blogger.comments.domain.entities.CommentService;
+import com.effynet.blogger.comments.domain.entities.SQSCommentEvent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +12,9 @@ import java.util.List;
 @RestController
 public class CommentController {
 
-    CommentService commentService = new CommentService();
+    CommentEvent commentEvent = new SQSCommentEvent();
+
+    CommentService commentService = new CommentService(commentEvent);
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/posts/{id}/comments")
