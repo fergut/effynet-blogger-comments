@@ -40,7 +40,7 @@ public class SQSCommentEvent implements CommentEvent {
                     .queueUrl("https://sqs.us-east-1.amazonaws.com/187314433716/effynet-blogger-comments-commentcreated")
                     .messageBody(gson.toJson(comment))
                     .messageAttributes(messageAttributes)
-                    .delaySeconds(5)
+                    .delaySeconds(0)
                     .build();
 
             SendMessageResponse response = sqsClient.sendMessage(sendMessageRequest);
