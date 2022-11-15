@@ -17,6 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation platform('software.amazon.awssdk:bom:2.18.11')
+	implementation 'software.amazon.awssdk:eventbridge:2.18.15'
 	implementation group: 'software.amazon.awssdk', name: 'sqs', version: '2.18.11'
 	implementation 'com.google.code.gson:gson:2.10'
 }

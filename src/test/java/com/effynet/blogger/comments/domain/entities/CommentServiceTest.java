@@ -22,7 +22,8 @@ class CommentServiceTest {
     void createCommentTest() {
         String postId = "1000";
         CommentEvent commentEvent = new FakeCommentEvent();
-        CommentService commentService = new CommentService(commentEvent);
+        CommentEventToBus commentEventToBus = new FakeCommentEventToBus();
+        CommentService commentService = new CommentService(commentEvent, commentEventToBus);
 
         Comment newComment = new Comment();
         newComment.setContent("First comment");
@@ -46,7 +47,8 @@ class CommentServiceTest {
         Comment comment;
         List<Comment> comments;
         CommentEvent commentEvent = new FakeCommentEvent();
-        CommentService commentService = new CommentService(commentEvent);
+        CommentEventToBus commentEventToBus = new FakeCommentEventToBus();
+        CommentService commentService = new CommentService(commentEvent, commentEventToBus);
 
         String postId1 = "1000";
 

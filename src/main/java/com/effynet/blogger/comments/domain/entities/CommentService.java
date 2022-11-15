@@ -17,9 +17,11 @@ import software.amazon.awssdk.services.sqs.model.SqsException;
 public class CommentService {
 
     private CommentEvent commentEvent;
+    private CommentEventToBus commentEventToBus;
 
-    public CommentService(CommentEvent commentEvent){
+    public CommentService(CommentEvent commentEvent, CommentEventToBus commentEventToBus){
         this.commentEvent = commentEvent;
+        this.commentEventToBus = commentEventToBus;
     }
 
     List<Comment> comments = new ArrayList<>();
@@ -31,6 +33,7 @@ public class CommentService {
 
         comments.add(newComment);
         this.commentEvent.publishCommentCreated(newComment);
+        this.commentEventToBus.publishCommentCreated(newComment);
 
         return newComment;
     }
