@@ -36,13 +36,6 @@ public class CommentService {
         System.out.println("Published to SQS");
         this.commentEvent.publishCommentCreated(newComment);
 
-        try {
-            Thread.sleep(3000);
-        }
-        catch (Exception e) {
-
-        }
-
         System.out.println("Published to EventBridge");
         this.commentEventToBus.publishCommentCreated(newComment);
 
